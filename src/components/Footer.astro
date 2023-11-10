@@ -1,46 +1,45 @@
 ---
-import Hr from "./Hr.astro";
 import Socials from "./Socials.astro";
 
 const currentYear = new Date().getFullYear();
-
-export interface Props {
-  noMarginTop?: boolean;
-}
-
-const { noMarginTop = false } = Astro.props;
 ---
 
-<footer class={`${noMarginTop ? "" : "mt-auto"}`}>
-  <Hr />
-  <div class="footer-wrapper">
-    <Socials centered />
-    <div class="copyright-wrapper">
-      <span>&#169; {currentYear}</span>
-      <span> &nbsp;Moritz Frisch</span>
-      <span class="separator">&nbsp;|&nbsp;</span>
-      <span>Alle Rechte vorbehalten.</span>
+<footer
+  class="w-full bg-gradient-to-r from-blue-600 to-blue-100 text-sm text-blue-800"
+>
+  <div
+    class="grid w-full max-w-6xl grid-rows-1 items-center gap-4 px-4 py-8 lg:grid-cols-3 lg:content-end"
+  >
+    <!-- Adresse -->
+    <div
+      class="flex flex-col items-center lg:order-1 lg:items-start lg:text-blue-200"
+    >
+      <p>Restaurant Rhodos</p>
+      <p>Mainzer Straße 2, 64331 Weiterstadt</p>
+      <p>Telefon: 06150-4120</p>
+      <a href="mailto:info@restaurant-rhodos.net" class="hover:underline"
+        >E-Mail: info@restaurant-rhodos.net</a
+      >
+    </div>
+
+    <!-- Öffnungszeiten -->
+    <div class="flex flex-col items-center lg:order-3">
+      <p>Öffnungszeiten:</p>
+      <p>Dienstag - Freitag & Sonntag:</p><p>12:00 - 14:30 und 17:00 - 23:00</p>
+      <p>Samstag: 17:00 - 23:00</p>
+      <p>Montag: Ruhetag</p>
+    </div>
+
+    <!-- Socials -->
+    <div class="flex flex-col items-center lg:order-2">
+      <div class="items-center">
+        <span class=""
+          >&copy; {currentYear} Moritz Frisch. Alle Rechte vorbehalten.</span
+        >
+      </div>
+      <div>
+        <Socials />
+      </div>
     </div>
   </div>
 </footer>
-
-<style>
-  footer {
-    @apply w-full;
-  }
-  .footer-wrapper {
-    @apply flex flex-col items-center justify-between py-6 sm:flex-row-reverse sm:py-4;
-  }
-  .link-button {
-    @apply my-1 p-2 hover:rotate-6;
-  }
-  .link-button svg {
-    @apply scale-125;
-  }
-  .copyright-wrapper {
-    @apply my-2 flex flex-col items-center whitespace-nowrap sm:flex-row;
-  }
-  .separator {
-    @apply hidden sm:inline;
-  }
-</style>

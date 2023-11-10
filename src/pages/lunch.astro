@@ -1,14 +1,21 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
+import Meal from "@components/Meal.astro";
 const title = "Mittagskarte:";
 const activeNav = "lunch";
+const posts = await getCollection("lunch");
 ---
 
 <Layout activeNav={activeNav}>
-  <section>
-    <h1 class="mr-2">
+  <section class="w-max-6xl">
+    <h1 class="m-auto py-4 text-center text-3xl">
       {title}
     </h1>
-    <p>Hier kommt die Mittagskarte hin.</p>
+    <div class="w-full">
+      <ul>
+        {posts.map(post => <Meal {post} />)}
+      </ul>
+    </div>
   </section>
 </Layout>

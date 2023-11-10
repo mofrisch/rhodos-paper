@@ -15,12 +15,14 @@ module.exports = {
     // if one breakpoint is not enough for you
     screens: {
       sm: "640px",
+      md: "768px",
+      lg: "1024px",
     },
 
     // Uncomment the following extend
     // if existing Tailwind color palette will be used
 
-    // extend: {
+    extend: {
     textColor: {
       skin: {
         base: withOpacity("--color-text-base"),
@@ -59,7 +61,6 @@ module.exports = {
     fontFamily: {
       mono: ["Roboto Flex"],
     },
-    // },
-  },
+  },},
   plugins: [require("@tailwindcss/typography")],
 };
